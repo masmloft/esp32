@@ -10,7 +10,7 @@
 //const char* ssid = "QW_SML_WLAN";
 //const char* password = "WirelessSml";
 
-////WiFiServer wifiServer(80);
+//WiFiServer wifiServer(1080);
 
 extern const char jquery_min_js_res[];
 
@@ -28,7 +28,8 @@ void setup(void) {
 	IPAddress myIP = WiFi.softAPIP();
 	Serial.print("AP IP address: ");
 	Serial.println(myIP);
-	//  wifiServer.begin();
+
+	//wifiServer.begin();
 
 	Serial.println("Server started");
 
