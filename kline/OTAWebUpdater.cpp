@@ -196,7 +196,7 @@ void loop(void)
 		if(abs(currTime - dbgTime) > 1000)
 		{
 			dbgTime = currTime;
-			Serial.print("ct:");
+			Serial.print("tick:");
 			Serial.print(currTime);
 			Serial.print("\r\n");
 		}
