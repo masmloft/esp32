@@ -5,7 +5,7 @@
 class HtmlPages
 {
 public:
-	HtmlPages();
+	static const char* UPDATE_PAGE;
 };
 
 #endif // HTMLPAGES_H

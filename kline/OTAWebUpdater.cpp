@@ -4,6 +4,8 @@
 //#include <ESPmDNS.h>
 #include <Update.h>
 
+#include "HtmlPages.h"
+
 ////const char* host = "esp32";
 //const char* ssid = "QW_SML_WLAN";
 //const char* password = "WirelessSml";
@@ -13,45 +15,6 @@
 extern const char jquery_min_js_res[];
 
 WebServer gWebServer(80);
-
-
-const char* serverIndex =
-		//"<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>"
-		"<script src='/jquery.min.js'></script>"
-		"<form method='POST' action='#' enctype='multipart/form-data' id='upload_form'>"
-		"<input type='file' name='update'>"
-		"<input type='submit' value='Update'>"
-		"</form>"
-		"<div id='prg'>progress: 0%</div>"
-		"<script>"
-		"$('form').submit(function(e){"
-		"e.preventDefault();"
-		"var form = $('#upload_form')[0];"
-		"var data = new FormData(form);"
-		" $.ajax({"
-		"url: '/update',"
-		"type: 'POST',"
-		"data: data,"
-		"contentType: false,"
-		"processData:false,"
-		"xhr: function() {"
-		"var xhr = new window.XMLHttpRequest();"
-		"xhr.upload.addEventListener('progress', function(evt) {"
-		"if (evt.lengthComputable) {"
-		"var per = evt.loaded / evt.total;"
-		"$('#prg').html('progress: ' + Math.round(per*100) + '%');"
-		"}"
-		"}, false);"
-		"return xhr;"
-		"},"
-		"success:function(d, s) {"
-		"console.log('success!')"
-		"},"
-		"error: function (a, b, c) {"
-		"}"
-		"});"
-		"});"
-		"</script>";
 
 void setup(void) {
 	Serial.begin(115200);
@@ -101,7 +64,7 @@ void setup(void) {
 //	});
 	gWebServer.on("/", HTTP_GET, []() {
 		gWebServer.sendHeader("Connection", "close");
-		gWebServer.send(200, "text/html", serverIndex);
+		gWebServer.send(200, "text/html", HtmlPages::UPDATE_PAGE);
 	});
 
 	gWebServer.on("/jquery.min.js", HTTP_GET, []() {
@@ -148,10 +111,10 @@ void loop(void)
 
 	{
 		static unsigned long dbgTime = currTime;
-		if(abs(currTime - dbgTime) > 1000)
+		if(abs(currTime - dbgTime) > 3000)
 		{
 			dbgTime = currTime;
-			Serial.print("tick:");
+			Serial.print("t:");
 			Serial.print(currTime);
 			Serial.print("\r\n");
 		}
