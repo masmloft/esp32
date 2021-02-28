@@ -151,7 +151,7 @@ void setup(void) {
 
 	gWebServer.on("/jquery.min.js", HTTP_GET, []() {
 		gWebServer.sendHeader("Connection", "close");
-		gWebServer.send(200, "application/javascript", jquery_min_js_res);
+		gWebServer.send_P(200, "application/javascript", jquery_min_js_res);
 	});
 
 	/*handling uploading firmware file */
