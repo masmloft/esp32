@@ -18,6 +18,7 @@ WebServer gWebServer(80);
 
 void setup(void) {
 	Serial.begin(115200);
+	Serial1.begin(115200);
 
 	Serial.println();
 	Serial.println("Configuring access point...");
