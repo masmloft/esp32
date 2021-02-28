@@ -17,10 +17,10 @@ Application {
         "**/*.h",
         "**/*.c",
         "**/*.cpp",
-
         "**/*.fileres",
-
         "../ESP32/ESP32Arduino/tools/partitions/default.csv",
+        "HtmlPages.cpp",
+        "HtmlPages.h",
     ]
 
 //    Group {

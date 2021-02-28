@@ -10,53 +10,10 @@
 
 ////WiFiServer wifiServer(80);
 
+extern const char jquery_min_js_res[];
+
 WebServer gWebServer(80);
 
-const char* loginIndex =
-		"<form name='loginForm'>"
-		"<table width='20%' bgcolor='A09F9F' align='center'>"
-		"<tr>"
-		"<td colspan=2>"
-		"<center><font size=4><b>ESP32 Login Page</b></font></center>"
-		"<br>"
-		"</td>"
-		"<br>"
-		"<br>"
-		"</tr>"
-		"<tr>"
-		"<td>Username:</td>"
-		"<td><input type='text' size=25 name='userid'><br></td>"
-		"</tr>"
-		"<br>"
-		"<br>"
-		"<tr>"
-		"<td>Password:</td>"
-		"<td><input type='Password' size=25 name='pwd'><br></td>"
-		"<br>"
-		"<br>"
-		"</tr>"
-		"<tr>"
-		"<td><input type='submit' onclick='check(this.form)' value='Login'></td>"
-		"</tr>"
-		"</table>"
-		"</form>"
-		"<script>"
-		"function check(form)"
-		"{"
-		"if(form.userid.value=='admin' && form.pwd.value=='admin')"
-		"{"
-		"window.open('/serverIndex')"
-		"}"
-		"else"
-		"{"
-		" alert('Error Password or Username')/*displays error message*/"
-		"}"
-		"}"
-		"</script>";
-
-/*
- * Server Index Page
- */
 
 const char* serverIndex =
 		//"<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>"
@@ -96,8 +53,6 @@ const char* serverIndex =
 		"});"
 		"</script>";
 
-extern const char jquery_min_js_res[];
-
 void setup(void) {
 	Serial.begin(115200);
 
@@ -113,7 +68,7 @@ void setup(void) {
 
 	Serial.println("Server started");
 
-	Serial.print(jquery_min_js_res);
+	//Serial.print(jquery_min_js_res);
 
 	// Connect to WiFi network
 //	WiFi.begin(ssid, password);
