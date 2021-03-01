@@ -10,7 +10,7 @@ Module {
     property string flashFreq: "80m"
     property string bootloaderMode: "qio"
 
-    property path toolsPath: path + "./../../../Arduino/"
+    property path toolsPath: path + "./../../../Libs/"
     property path gen_esp32part: toolsPath + "/tools/gen_esp32part.exe"
     property path esptool: toolsPath + "/tools/esptool_py/3.0.0/esptool.exe"
     property path bootApp: toolsPath + "/tools/partitions/boot_app0.bin"

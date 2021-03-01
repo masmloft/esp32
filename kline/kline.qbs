@@ -15,7 +15,7 @@ Application {
         "**/*.c",
         "**/*.cpp",
         "**/*.fileres",
-        "../ESP32Libs/Arduino/tools/partitions/default.csv",
+        "../ESP32/Libs/tools/partitions/default.csv",
     ]
 
     Group {
