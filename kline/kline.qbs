@@ -1,5 +1,5 @@
 Application {
-    type: ["application", "application.info"]
+    //type: ["application", "application.info"]
     //type: ["application.elf", "application.info"]
 
     Depends { name: "cpp" }
@@ -21,9 +21,9 @@ Application {
         "../ESP32/ESP32Arduino/tools/partitions/default.csv",
     ]
 
-//    Group {
-//        qbs.install: true
-//        fileTagsFilter: product.type
-//    }
+    Group {
+        qbs.install: true
+        fileTagsFilter: product.type
+    }
 
 }

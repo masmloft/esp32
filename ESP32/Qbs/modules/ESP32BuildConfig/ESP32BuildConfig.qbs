@@ -7,8 +7,6 @@ Module {
 
     Depends { name: "cpp" }
 
-//    cpp.optimization: "small"
-
     cpp.assemblerFlags: [
         "none",
     ]
@@ -123,12 +121,17 @@ Module {
         prepare:
         {
             var app = product.cpp.toolchainInstallPath + (product.cpp.toolchainPrefix ? "/" + product.cpp.toolchainPrefix : "/") + "size";
-            //var args = ["-A", input.filePath ];
-            var args = [input.filePath ];
-            var cmd = new Command(app, args);
+
+            var cmd = new Command(app, [input.filePath ]);
             cmd.description = "***Info: " + output.filePath;
             cmd.highlight = "linker";
-            return [cmd];
+
+            var cmdFile = new Command(app, [ input.filePath ]);
+            cmdFile.stdoutFilePath = output.filePath;
+            cmdFile.description = "***Info: " + output.filePath;
+            cmdFile.highlight = "linker";
+
+            return [cmd, cmdFile];
         }
     }
 
@@ -197,7 +200,7 @@ Module {
         name: "flash.bat"
         condition: true
         multiplex: true
-        inputs: ["application.bin", "partitions.bin"]
+        inputs: ["application.bin", "partitions.bin", "application.info"]
         Artifact
         {
             filePath: product.name + ".flash.bat"
