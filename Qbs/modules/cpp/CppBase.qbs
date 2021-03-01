@@ -40,11 +40,12 @@ Module  {
 
     property pathList includePaths
     property stringList defines
+
+    property stringList commonCompilerFlags
     property stringList assemblerFlags
     property stringList cFlags
     property stringList cxxFlags
     property stringList linkerFlags
-    //property bool staticBuild: false
     property stringList driverFlags: project.driverFlags
     property stringList driverLinkerFlags: project.driverLinkerFlags
 

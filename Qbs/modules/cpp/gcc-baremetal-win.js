@@ -25,16 +25,19 @@ function prepareCompiler(product, input, output)
     if(input.fileTags == "c")
     {
         compilerName = product.cpp.cCompilerName
+        args = args.concat(product.cpp.commonCompilerFlags)
         args = args.concat(product.cpp.cFlags)
     }
     if(input.fileTags == "cpp")
     {
         compilerName = product.cpp.cxxCompilerName
+        args = args.concat(product.cpp.commonCompilerFlags)
         args = args.concat(product.cpp.cxxFlags)
     }
     if(input.fileTags == "asm_cpp")
     {
         compilerName = product.cpp.cCompilerName
+        args = args.concat(product.cpp.commonCompilerFlags)
         args = args.concat(product.cpp.assemblerFlags)
     }
 

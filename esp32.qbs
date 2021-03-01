@@ -3,11 +3,11 @@ import qbs
 Project {
     qbsSearchPaths: [
         "./Qbs",
-		"./ESP32/Qbs" 
+        "./ESP32Libs/Qbs"
 	]
 
     references: [
-        "ESP32/ESP32.qbs",
+        "ESP32Libs/ESP32Libs.qbs",
         "kline/kline.qbs",
        ]
 }
