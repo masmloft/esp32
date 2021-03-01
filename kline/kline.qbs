@@ -8,7 +8,7 @@ Application {
     Depends { name: "ESP32WebServer" }
     Depends { name: "ESP32Update" }
 
-    ESP32Cfg.serialPort: "COM8"
+    ESP32Cfg.serialPort: "COM43"
 
     files: [
         "**/*.h",
