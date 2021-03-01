@@ -8,7 +8,6 @@ Module {
     Depends { name: "cpp" }
 
     cpp.assemblerFlags: [
-        //"none",
     ]
 
     cpp.cFlags: [
