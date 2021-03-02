@@ -8,6 +8,7 @@ Module {
     property string serialPortSpeed: "921600"
     property string flashMode: "dio"
     property string flashFreq: "80m"
+    property string flashSize: "4MB"
     property string bootloaderMode: "qio"
 
     property path toolsPath: path + "./../../../Libs/"
@@ -111,7 +112,7 @@ Module {
             var app = product.cpp.toolchainInstallPath + (product.cpp.toolchainPrefix ? "/" + product.cpp.toolchainPrefix : "/") + "size";
 
             var cmd = new Command(app, [input.filePath ]);
-            cmd.description = "***Info: " + output.filePath;
+            cmd.description = "***Info: " + output.fileName;
             cmd.highlight = "linker";
 
             var cmdFile = new Command(app, [ input.filePath ]);
@@ -138,14 +139,14 @@ Module {
             var app = product.ESP32Cfg.esptool;
             var args = [
                         "--chip","esp32","elf2image",
-                        "--flash_mode","dio",
-                        "--flash_freq","80m",
-                        "--flash_size","4MB",
-                        "-o",output.filePath,
-                        input.filePath,
+                        "--flash_mode", product.ESP32Cfg.flashMode,
+                        "--flash_freq", product.ESP32Cfg.flashFreq,
+                        "--flash_size", product.ESP32Cfg.flashSize,
+                        "-o", output.filePath,
+                        input.filePath
                     ];
             var cmd = new Command(app, args);
-            cmd.description = "***Generate: " + output.filePath;
+            cmd.description = "***Generate: " + output.fileName;
             cmd.highlight = "linker";
             return [cmd];
         }
@@ -172,7 +173,7 @@ Module {
             var app = product.ESP32Cfg.gen_esp32part;
             var args = [ "-q", input.filePath, output.filePath ];
             var cmd = new Command(app, args);
-            cmd.description = "***Generate: " + output.filePath;
+            cmd.description = "***Generate: " + output.fileName;
             cmd.highlight = "linker";
             return [cmd];
         }
@@ -193,7 +194,7 @@ Module {
         prepare:
         {
             var cmd = new JavaScriptCommand();
-            cmd.description = "***Generate: " + output.filePath;
+            cmd.description = "***Generate: " + output.fileName;
             cmd.sourceCode = function() {
                 var ofile = new TextFile(output.filePath, TextFile.WriteOnly);
 
