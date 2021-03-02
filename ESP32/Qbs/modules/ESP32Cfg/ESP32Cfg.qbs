@@ -11,11 +11,11 @@ Module {
     property string flashSize: "4MB"
     property string bootloaderMode: "qio"
 
-    property path toolsPath: path + "./../../../Libs/"
-    property path gen_esp32part: toolsPath + "/tools/gen_esp32part.exe"
-    property path esptool: toolsPath + "/tools/esptool_py/3.0.0/esptool.exe"
-    property path bootApp: toolsPath + "/tools/partitions/boot_app0.bin"
-    property path bootloader: toolsPath + "/tools/sdk/bin/bootloader_" + bootloaderMode + "_" + flashFreq + ".bin"
+    property path rootPath: path + "./../../../Libs/"
+    property path gen_esp32part: rootPath + "/tools/gen_esp32part.exe"
+    property path esptool: rootPath + "/tools/esptool_py/3.0.0/esptool.exe"
+    property path bootApp: rootPath + "/tools/partitions/boot_app0.bin"
+    property path bootloader: rootPath + "/tools/sdk/bin/bootloader_" + bootloaderMode + "_" + flashFreq + ".bin"
 
     Depends { name: "cpp" }
 
